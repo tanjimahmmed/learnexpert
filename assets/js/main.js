@@ -9,8 +9,23 @@
             loop: true,
             nav: true,
             dots: false,
-            autoplay: false,
+            autoplay: true,
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
             navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
+        });
+
+        $(".homepage_slides").on("translate.owl.carousel", function(){
+            $(".single_slide_item h2").removeClass("animated fadeInUp").css("opacity", "0");
+            $(".single_slide_item p").removeClass("animated fadeInDown").css("opacity", "0");
+            $(".single_slide_item a").removeClass("animated fadeInDown").css("opacity", "0");
+            $(".single_slide_item iframe").removeClass("animated fadeInUp").css("opacity", "0");
+        });
+        $(".homepage_slides").on("translated.owl.carousel", function(){
+            $(".single_slide_item h2").addClass("animated fadeInUp").css("opacity", "1");
+            $(".single_slide_item p").addClass("animated fadeInDown").css("opacity", "1");
+            $(".single_slide_item a").addClass("animated fadeInDown").css("opacity", "1");
+            $(".single_slide_item iframe").addClass("animated fadeInUp").css("opacity", "1");
         });
 
         // -- counter -- //   
@@ -78,7 +93,11 @@
             }, 1500, 'easeInOutExpo');
             return false;
         });
-
+        // -- wow -- //
+        var wow = new WOW({
+            mobile:false
+        });
+        wow.init();
 
     });
 
